@@ -11,7 +11,7 @@ class Road(pygame.sprite.Sprite):
 
         surface = pygame.display.get_surface()
         self.rect.midleft = surface.get_rect().midleft
-        self.rect1.midleft = surface.get_rect().midright
+        self.rect1.midleft = self.rect.midright
 
     def draw(self, surface):
         surface.blit(self.image, self.rect)
@@ -20,7 +20,9 @@ class Road(pygame.sprite.Sprite):
     def update(self):
         self.rect.x -= 5
         self.rect1.x -= 5
+
         if self.rect.right < 0:
             self.rect.midleft = self.rect1.midright
+
         if self.rect1.right < 0:
             self.rect1.midleft = self.rect.midright
